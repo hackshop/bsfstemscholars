@@ -1,0 +1,12 @@
+{% if instructor %}
+<div class="instructor">
+    {% if instructor.gravatar %}
+    <figure><img src="http://www.gravatar.com/avatar/{{ instructor.gravatar }}" alt="{{ instructor.display_name }}" /></figure>
+    {% endif %}
+    <p class="name">{{ instructor.display_name }}</p>
+    {% assign connect_links = "" | split:"|" %}
+    {% if instructor.email %}{% capture email_link %}<a href="mailto:{{ instructor.email }}">{{ instructor.email }}</a>{% endcapture %}{% assign connect_links = connect_links | push: email_link %}{% endif %}
+    {% if instructor.twitter %}{% capture twitter_link %}<a href="https://twitter.com/{{ instructor.twitter }}">{{ instructor.twitter | prepend: "@" }}</a>{% endcapture %}{% assign connect_links = connect_links | push: twitter_link %}{% endif %}
+    {% if connect_links.size %}<p>{{ connect_links | join: ', ' }}</p>{% endif %}
+</div>
+{% endif %}

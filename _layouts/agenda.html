@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% assign agenda_data = page.path | replace: '.md', '' | replace: '_agendas/', '' | split: '/' %}
+{% assign semester = agenda_data[0] | times: 1 %}
+{% assign class_name = agenda_data[1] %}
+{% assign agenda_name = agenda_data[2] %}
+{% assign week_number = agenda_name | split: '-' | last | times: 1 %}
+{% assign session = site.data.semesters[semester] %}
+{% assign class_path = '_classes/' | append: class_name | append: '.md' %}
+{% assign class = site.classes | where:'relative_path', class_path | first %}
+{% assign instructor = site.data.instructors[class.instructor] %}
+{% assign default_agenda_title = agenda_name | replace: '-', ' ' | capitalize %}
+{% assign default_agenda_location = session.default_location %}
+{% assign default_agenda_start_time = session.default_start_time %}
+{% assign default_agenda_end_time = session.default_end_time %}
+{% assign default_start_date = session.days[week_number] %}
+<p>{{ default_date }}</p>
+<article class="box post post-excerpt">
+    <header>
+        <h1>{{ page.name | default: default_agenda_title }}</h1>
+        <p>
+            {{ page.start_date | default: default_start_date | date: "%A, %B %-d, %Y" }}
+            from
+            {{ page.start_time | default: default_agenda_start_time | date: "%H:%M %p %Z" }}
+            to
+            {{ page.end_time | default: default_agenda_end_time | date: "%H:%M %p %Z" }}
+            at
+            {{ page.location | default: default_agenda_location }}
+        </p>
+        {% include instructor-badge.html %}
+    </header>
+    <div>
+        {{ content }}
+    </div>
+    {% include comments.html %}
+</article>

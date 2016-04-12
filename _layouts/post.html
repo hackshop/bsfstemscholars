@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{% assign author = site.data.authors[page.author] %}
+<article class="box post post-excerpt" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="name headline">{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <p>{{ page.subtitle }}</p>
+        {% else if author %}
+        <p itemprop="author" itemscope itemtype="http://schema.org/Person">by <span itemprop="name">{{ author.display_name }}</span></p>
+        {% endif %}
+    </header>
+    <div class="info">
+        <span class="date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished"><span class="month">{{ page.date | date:"%B" | slice: 0, 3 }}<span>{{ page.date | date:"%B" | slice: -2, 10 }}</span></span> <span class="day">{{ page.date | date:"%d" }}</span><span class="year">, {{ page.date | date:"%Y" }}</span></span>
+        <!--
+        <ul class="stats">
+            <li><a href="#" class="icon fa-comment">16</a></li>
+            <li><a href="#" class="icon fa-heart">32</a></li>
+            <li><a href="#" class="icon fa-twitter">64</a></li>
+            <li><a href="#" class="icon fa-facebook">128</a></li>
+        </ul>
+        -->
+    </div>
+    <div itemprop="articleBody">
+    {{ content }}
+    </div>
+    {% include comments.html %}
+</article>

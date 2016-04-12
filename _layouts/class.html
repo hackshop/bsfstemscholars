@@ -1,0 +1,57 @@
+---
+layout: default
+---
+{% assign instructor = site.data.instructors[page.instructor] %}
+<article class="box post post-excerpt">
+    <header>
+        <h1>{{ page.title }}</h1>
+        {% if page.summary %}
+        <p>{{ page.summary }}</p>
+        {% endif %}
+        {% include instructor-badge.html %}
+    </header>
+    <div class="overview">
+        {{ content }}
+    </div>
+    <div class="schedule">
+        <h2>Full-Year Schedule</h2>
+        <table class="default">
+            <thead>
+                <th>Session</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Note</th>
+            </thead>
+            <tbody>
+            {% assign semester = site.data.semesters[site.current_semester] %}
+            {% assign filename = page.path | replace_first: '_classes/', '' | replace: '/', '-'  | replace: '.md', '' %}
+            {% capture class_path %}_agendas/{{ site.current_semester }}/{{ filename }}{% endcapture %}
+            {% for session in semester.days %}
+            {% assign week_number = forloop.index + 1 %}
+            {% assign default_title = week_number | prepend: 'Week ' %}
+            {% assign default_start_time = semester.default_start_time | date: "%H:%M %p %Z" %}
+            {% assign default_end_time = semester.default_end_time | date: "%H:%M %p %Z" %}
+            {% assign default_start_string = session | date: "%A, %B %-d, %Y" | append: ' at ' | append: default_start_time %}
+            {% capture agenda_data %}{{ class_path }}/week-{{ week_number }}.md{% endcapture %}
+            {% assign agenda = site.agendas | where:'relative_path', agenda_data | first %}
+            {% if agenda %}
+            <tr>
+                <td><a href="{{ agenda.url }}">{% if agenda.name %}{{ agenda.name }}{% else %}{{ default_title }}{% endif %}</pre></a></td>
+                <td>{{ agenda.start_date | date: "%A, %B %-d, %Y at %H:%M %p %Z" | default: default_start_string }}</td>
+                <td>{{ agenda.location | default: semester.default_location }}</td>
+                <td>{{ agenda.note }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>{{ default_title }}</td>
+                <td>{{ default_start_string }}</td>
+                <td>{{ semester.default_location }}</td>
+                <td></td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include comments.html %}
+</article>

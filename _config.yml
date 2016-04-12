@@ -1,0 +1,42 @@
+title: BSF STEM Scholars Program
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  A website managed by students, to share the experiences of STEM Scholars
+  with family, friends, and the world.
+baseurl: ""
+url: "http://bsfstemscholars.com/"
+twitter_username: jekyllrb
+github_username:  jekyll
+
+current_semester: 2015
+
+array: []
+
+defaults:
+  - scope:
+      path: ""
+      type: agendas
+    values:
+      layout: agenda
+  - scope:
+      path: ""
+      type: classes
+    values:
+      layout: class
+
+collections:
+  agendas:
+    output: true
+    permalink: /agendas/:path/
+  classes:
+    output: true
+    permalink: /classes/:path/
+
+# Dependencies
+gems: [jekyll-paginate]
+
+# Build settings
+markdown: kramdown
+paginate: 2
+paginate_path: "/page/:num"
+permalink: "/blog/:title-:year:month:day"
