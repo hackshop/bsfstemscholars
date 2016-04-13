@@ -12,17 +12,30 @@ current_semester: 2015
 
 array: []
 
+github_repo_base: https://github.com/stevenmaguire/bsfstemscholars
+
 defaults:
   - scope:
       path: ""
       type: agendas
     values:
       layout: agenda
+      type: agenda
+      is_single: true
   - scope:
       path: ""
       type: classes
     values:
       layout: class
+      type: class
+      is_single: true
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      type: post
+      is_single: true
 
 collections:
   agendas:

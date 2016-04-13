@@ -809,6 +809,18 @@ ol {
     }
 }
 
+.edit-controls {
+    position: fixed;
+    padding: 20px 20px 0px 0px;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
 /* Desktop */
 
 @include breakpoint(desktop) {
@@ -1186,7 +1198,6 @@ ol {
                 margin-right: _size(sidebar);
             }
         }
-
 }
 
 /* Narrower */
@@ -1234,6 +1245,9 @@ ol {
             padding: 30px 20px 30px 20px;
         }
 
+    .edit-controls {
+        display: none;
+    }
 }
 
 /* Mobile */
@@ -1395,6 +1409,9 @@ ol {
             }
         }
 
+    .edit-controls {
+        display: none;
+    }
 }
 
 /* Off-Canvas Sidebar */
