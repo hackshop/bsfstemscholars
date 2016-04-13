@@ -1,6 +1,6 @@
 {% assign repo_url = site.github.repository_url | default: site.github_repo_base %}
 {% if page.is_single and repo_url %}
 <div class="edit-controls">
-    <p><a href="{{ repo_url }}/blob/gh-pages/{{ page.path }}" class="button">Edit this page</a></p>
+    <p><a href="{{ repo_url }}/blob/gh-pages/{{ page.path }}" class="button" target="_blank">Edit this page</a></p>
 </div>
 {% endif %}
