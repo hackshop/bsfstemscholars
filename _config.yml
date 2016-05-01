@@ -12,7 +12,7 @@ current_semester: 2015
 
 array: []
 
-github_repo_base: https://github.com/hackshop/bsfstemscholars
+github_repo_base: https://github.com/hackshop/bsfstemscholars/
 
 defaults:
   - scope:
@@ -52,4 +52,4 @@ gems: [jekyll-paginate]
 markdown: kramdown
 paginate: 2
 paginate_path: "/page/:num"
-permalink: "blog/:title-:year:month:day"
+permalink: "/blog/:title-:year:month:day"
