@@ -52,4 +52,4 @@ gems: [jekyll-paginate]
 markdown: kramdown
 paginate: 2
 paginate_path: "/page/:num"
-permalink: "/blog/:title-:year:month:day"
+permalink: "blog/:title-:year:month:day"
