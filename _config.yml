@@ -12,7 +12,7 @@ current_semester: 2015
 
 array: []
 
-github_repo_base: https://github.com/stevenmaguire/bsfstemscholars
+github_repo_base: https://github.com/hackshop/bsfstemscholars
 
 defaults:
   - scope:
