@@ -3,8 +3,8 @@ email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
   A website managed by students, to share the experiences of STEM Scholars
   with family, friends, and the world.
-baseurl: ""
-url: "http://bsfstemscholars.com/"
+baseurl: "/bsfstemscholars"
+url: "http://hackshop.github.io/"
 twitter_username: jekyllrb
 github_username:  jekyll
 
