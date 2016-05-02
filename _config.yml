@@ -4,7 +4,7 @@ description: > # this means to ignore newlines until "baseurl:"
   A website managed by students, to share the experiences of STEM Scholars
   with family, friends, and the world.
 baseurl: "/bsfstemscholars"
-url: "http://hackshop.github.io/"
+url: "http://jekyll.basfstemscholars.com/"
 twitter_username: jekyllrb
 github_username:  jekyll
 
